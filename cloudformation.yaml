@@ -1,0 +1,49 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  S3BucketName:
+    Type: String
+    Description: "S3 bucket name"
+    MinLength: 4
+    MaxLength: 253
+  DynamoDBTableName:
+    Type: String
+    Description: "Dynamo table name"
+    MinLength: 4
+    MaxLength: 253
+Resources:
+  TranslationsBucket:
+    Properties:
+      AccessControl: Private
+      BucketName: !Ref S3BucketName
+      LifecycleConfiguration:
+        Rules:
+        - ExpirationInDays: 2
+          Id: TranslationsBucketRule
+          Status: Enabled
+    Type: AWS::S3::Bucket
+  TranslationsTable:
+    Properties:
+      AttributeDefinitions:
+      - AttributeName: id
+        AttributeType: S
+      KeySchema:
+      - AttributeName: id
+        KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      TableName: !Ref DynamoDBTableName
+      TimeToLiveSpecification:
+        AttributeName: expires
+        Enabled: true
+    Type: AWS::DynamoDB::Table
+Outputs:
+  TranslationsBucket:
+    Description: S3 bucket storing translations.
+    Value:
+      Ref: TranslationsBucket
+  TranslationsTable:
+    Description: DynamoDB table indexing translations.
+    Value:
+      Ref: TranslationsTable

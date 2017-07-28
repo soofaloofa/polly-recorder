@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <section>
+      <textarea id="record-text" placeholder="Enter text to convert to speech"></textarea>
+      <hr>
+      <span id="char-counter">Characters: 0</span>
+      <input type="submit" value="Say it!" id="say-it" class="buttons">
+      <br>
+      <br>
+      <table id="last-record" class="posts">
+        <colgroup>
+          <col style="width:5%">
+          <col style="width:10%">
+          <col style="width:50%">
+          <col style="width:30%">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Voice</th>
+            <th>Created</th> 
+            <th>Text</th>
+            <th>Player</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+    </br></br></br></br>
+      <br/>
+
+      <span><strong>Archives</strong></span>
+      <input type="submit" class="buttons" value="Refresh" id="refresh">
+      <table id="archives" class="posts">
+        <colgroup>
+          <col style="width:5%">
+          <col style="width:10%">
+          <col style="width:50%">
+          <col style="width:30%">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Voice</th>
+            <th>Created</th> 
+            <th>Text</th>
+            <th>Player</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+
+    </section>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
