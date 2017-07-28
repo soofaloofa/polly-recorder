@@ -8,15 +8,13 @@ from contextlib import closing
 import boto3
 from boto3.dynamodb.conditions import Key
 
-from chalice import Chalice, IAMAuthorizer
+from chalice import Chalice
 
 app = Chalice(app_name='recorder')
 app.debug = True
 
-authorizer = IAMAuthorizer()
-
-DYNAMO_DB_TABLE = os.environ['DYNAMO_DB_TABLE']
-S3_BUCKET = os.environ['S3_BUCKET']
+DYNAMO_DB_TABLE = '<your-table>'
+S3_BUCKET = '<your-bucket>'
 
 VOICES = ['Celine', 'Mathieu', 'Chantal']
 
@@ -87,7 +85,7 @@ def index_in_dynamodb(record_id, text, voice, url, table_name):
     """
     table = dynamodb.Table(table_name)
     posix_day = 86400
-    expire_time = long(time.time()) + 90*posix_day
+    expire_time = long(time.time()) + 2*posix_day
 
     item = {
         'id': record_id,
