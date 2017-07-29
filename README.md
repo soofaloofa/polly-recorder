@@ -3,7 +3,7 @@
 A chalice based recording interface for converting text-to-speech using
 AWS polly.
 
-See: https://sookocheff.com/..
+See: https://sookocheff.com/post/aws/learning-a-language-with-amazon-polly/
 
 ## Setup
 
